@@ -1,5 +1,4 @@
 .add_note_wrapper {
-  border: 1px solid rgb(31, 16, 16);
   height: 100%;
   width: 100%;
   padding: 15px 20px;
@@ -25,16 +24,22 @@
       color: rgba(255, 255, 255, 1);
       background-color: rgba(255, 255, 255, 0.04);
     }
+
     select option {
       background: rgba(0, 0, 0, 0.8);
       color: #fff;
+      cursor: pointer;
+
+      .category_placeholder {
+        pointer-events: none;
+      }
     }
   }
   .note_content {
     padding: 15px 12px;
     width: 100%;
     font-size: 1rem;
-    height: 350px;
+    height: 280px;
     margin-top: 30px;
     border: none;
     outline: none;
@@ -53,5 +58,18 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 6px;
+  }
+
+  .cancel_btn {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 6px;
+    display: none;
+
   }
 }

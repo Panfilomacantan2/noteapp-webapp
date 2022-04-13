@@ -7,11 +7,11 @@ const uuid = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0,
       v = c == "x" ? r : (r & 0x3) | 0x8;
-
     return v.toString(16);
   });
 };
 
+//check data and return
 const getData = () => {
   const checkLS =
     localStorage.getItem("Notes") === null
@@ -37,6 +37,7 @@ const fetchData = () => {
 
 fetchData();
 
+//add and update
 saveBtn.addEventListener("click", () => {
   if (checkValidity()) {
     if (isUpdate) {
@@ -53,6 +54,11 @@ saveBtn.addEventListener("click", () => {
       data[noteId] = checkValidity();
 
       localStorage.setItem("Notes", JSON.stringify(data));
+
+      const cancelBtn = document.querySelector(".cancel_btn");
+      cancelBtn.style.display = "none";
+      const saveBtn = document.querySelector(".save_btn");
+      saveBtn.innerHTML = "SAVE";
     } else {
       //returning all input fields
       const note = checkValidity();
@@ -88,6 +94,7 @@ const checkValidity = () => {
   };
 };
 
+//display all notes
 const displayNotes = () => {
   const collectionContainer = document.querySelector(".collection");
   const data = getData();
@@ -105,7 +112,7 @@ const displayNotes = () => {
 
       const setAction = isLocked ? "lock" : "";
       const cutContent =
-        content.length >= 25 ? content.slice(0, 25) + "..." : content;
+        content.length >= 28 ? content.slice(0, 28) + "..." : content;
 
       output += `
 
@@ -120,6 +127,7 @@ const displayNotes = () => {
             <span class="lock_btn ${setAction}"  onclick="lockNote(${index})"><ion-icon name="lock"></ion-icon></span>
             <span class="edit_btn ${setAction}" onclick="editNote(${index})"><ion-icon name="create"></ion-icon></span>
             <span class="delete_btn ${setAction}" onclick="deleteNote(${index})"><ion-icon name="trash"></ion-icon></span>
+            <span class="view_btn ${setAction}" onclick="viewNote(${index})" data-toggle="modal" data-target="#view_note_modal"><ion-icon name="eye"></ion-icon></span>
           </div>
         </li>
 
@@ -157,8 +165,23 @@ const editNote = (index) => {
   console.log(isUpdate);
 
   editID = id;
+
+  const cancelBtn = document.querySelector(".cancel_btn");
+  cancelBtn.style.display = "block";
+  cancelBtn.addEventListener("click", cancelAction);
 };
 
+const cancelAction = () => {
+  const cancelBtn = document.querySelector(".cancel_btn");
+  cancelBtn.style.display = "none";
+  const saveBtn = document.querySelector(".save_btn");
+  saveBtn.innerHTML = "SAVE";
+  isUpdate = false;
+  editID = null;
+  clearInput();
+};
+
+//lock the note
 const lockNote = (index) => {
   const data = getData();
 
@@ -174,7 +197,6 @@ const lockNote = (index) => {
 };
 
 //search notes
-
 const searchInput = document.querySelector(".search_input");
 
 searchInput.addEventListener("keyup", () => {
@@ -189,7 +211,7 @@ searchInput.addEventListener("keyup", () => {
   if (filteredData.length > 0) {
     filteredData.map((note, index) => {
       const { title, category, content, date, id, isLocked } = note;
-      const setAction = isLocked ? "lock" : "";
+      const setAction = isLocked ? "lock" : " ";
       const cutContent =
         content.length >= 25 ? content.slice(0, 25) + "..." : content;
       output += `
@@ -205,6 +227,8 @@ searchInput.addEventListener("keyup", () => {
             <span class="lock_btn ${setAction}"  onclick="lockNote(${index})"><ion-icon name="lock"></ion-icon></span>
             <span class="edit_btn ${setAction}" onclick="editNote(${index})"><ion-icon name="create"></ion-icon></span>
             <span class="delete_btn ${setAction}" onclick="deleteNote(${index})"><ion-icon name="trash"></ion-icon></span>
+            <span class="view_btn ${setAction}" onclick="viewNote(${index})" data-toggle="modal" data-target="#view_note_modal"><ion-icon name="eye"></ion-icon></span>
+
           </div>
         </li> `;
     });
@@ -221,9 +245,61 @@ searchInput.addEventListener("keyup", () => {
   console.log(searchValue);
 });
 
+//view note
+
+const viewNote = (index) => {
+  const data = getData();
+  const { title, category, content, date, id, isLocked } = data[index];
+
+  const modalTitle = document.querySelector(".modal-title");
+  const modalBody = document.querySelector(".modal-body");
+
+  modalTitle.innerHTML = `<p>Title: ${title}
+                           <p>Category: ${category}</p>
+                           <p>Date: ${date}</p>`;
+
+  modalBody.innerHTML = `<p class=" text-break"">${content}</p>`;
+};
+
+//clear all input fields
 const clearInput = () => {
   document.querySelector(".title").value = "";
-  document.querySelector(".category").value = "";
   document.querySelector(".note_content").value = "";
 };
-//search for the note_content
+
+document.addEventListener("click", (e) => {
+  tippy(".view_btn", {
+    placement: "bottom",
+    content: "View Note",
+    allowHTML: true,
+    arrow: false,
+  });
+
+  tippy(".edit_btn", {
+    placement: "bottom",
+    content: "Edit Note",
+    allowHTML: true,
+    arrow: false,
+  });
+
+  tippy(".delete_btn", {
+    placement: "bottom",
+    content: "Delete Note",
+    allowHTML: true,
+    arrow: false,
+  });
+
+  tippy(".lock_btn", {
+    placement: "bottom",
+    content: "Lock Note",
+    allowHTML: true,
+    arrow: false,
+  });
+
+  tippy(".lock_btn.lock", {
+    placement: "bottom",
+    content: "Locked",
+    allowHTML: true,
+    arrow: false,
+  });
+});
