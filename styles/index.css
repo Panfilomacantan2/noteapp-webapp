@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+.header {
+  width: 100%;
+  padding: 10px 10vw;
+  top: 0;
+  left: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #131408;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header .logo {
+  color: #fff;
+}
+
+.header .add_btn {
+  color: #fff;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.add_note_wrapper {
+  border: 1px solid #1f1010;
+  height: 100%;
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.add_note_wrapper .note_details_header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.add_note_wrapper .note_details_header .title,
+.add_note_wrapper .note_details_header .category {
+  margin-bottom: 10px;
+  padding: 0px 10px;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.add_note_wrapper .note_details_header select option {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+.add_note_wrapper .note_content {
+  padding: 15px 12px;
+  width: 100%;
+  font-size: 1rem;
+  height: 350px;
+  margin-top: 30px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  resize: none;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.add_note_wrapper .save_btn {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  color: #fff;
+  background-color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.view_notes_container {
+  border: 1px solid rgba(36, 19, 19, 0.06);
+  height: 100%;
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.view_notes_container .collection_label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.view_notes_container .collection {
+  width: 100%;
+  color: white;
+  height: 480px;
+  overflow-y: scroll;
+}
+
+.view_notes_container .collection::-webkit-scrollbar {
+  width: 0;
+}
+
+.view_notes_container .collection .empty_collection {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.view_notes_container .collection .empty_collection img {
+  width: 80%;
+  height: 200px;
+  margin-bottom: 30px;
+}
+
+.view_notes_container .collection li {
+  list-style: none;
+  padding: 10px 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70% 30%;
+      grid-template-columns: 70% 30%;
+}
+
+.view_notes_container .collection li .detail {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.view_notes_container .collection li .detail .date {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.view_notes_container .collection li .action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0 10px;
+}
+
+.view_notes_container .collection li .action.lock {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.view_notes_container .collection li .action .delete_btn,
+.view_notes_container .collection li .action .edit_btn,
+.view_notes_container .collection li .action .lock_btn {
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 7px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view_notes_container .collection li .action .delete_btn.lock,
+.view_notes_container .collection li .action .edit_btn.lock {
+  display: none;
+}
+
+.view_notes_container .search_note {
+  width: 100%;
+  position: relative;
+}
+
+.view_notes_container .search_note .search_input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.view_notes_container .search_note .search_btn {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.notes_container {
+  width: 100%;
+  height: calc(100vh - 40px);
+  background-color: #121b1b;
+  padding: 20px 10vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  place-items: center;
+  gap: 30px;
+}
+/*# sourceMappingURL=index.css.map */

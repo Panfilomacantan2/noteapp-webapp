@@ -1,0 +1,107 @@
+.view_notes_container {
+  border: 1px solid rgba(36, 19, 19, 0.06);
+  height: 100%;
+  width: 100%;
+  padding: 15px 20px;
+
+  .collection_label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .collection {
+    width: 100%;
+    color: rgba(255, 255, 255, 1);
+    height: 480px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .empty_collection {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      img {
+        width: 80%;
+        height: 200px;
+        margin-bottom: 30px;
+      }
+    }
+
+    li {
+      list-style: none;
+      padding: 10px 0;
+      display: grid;
+      grid-template-columns: 70% 30%;
+
+      .detail {
+        flex-direction: column;
+
+        .date {
+          font-size: 0.8rem;
+          margin-top: 5px;
+        }
+      }
+
+      .action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0 10px;
+
+        &.lock {
+          justify-content: end;
+        }
+
+        .delete_btn,
+        .edit_btn,
+        .lock_btn {
+          background-color: rgba(255, 255, 255, 0.04);
+          padding: 7px 10px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        .delete_btn.lock,
+        .edit_btn.lock {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .search_note{
+    width: 100%;
+    position: relative;
+
+    .search_input {
+      width: 100%;
+      height: 40px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      padding: 0 10px;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 1);
+      background-color: rgba(255, 255, 255, 0.04);
+    }
+
+    .search_btn{
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      color:rgba(255, 255, 255, 1);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+  }
+}

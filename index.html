@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <title>Tutorial</title>
+  </head>
+  <body>
+    <header class="header">
+      <h3 class="logo">NoteApp</h3>
+      <span class="add_btn">+</span>
+    </header>
+
+    <div class="notes_container">
+      <div class="view_notes_container">
+        <h3 class="collection_label">Collections</h3>
+        <div class="search_note">
+          <input class="search_input" type="text" placeholder="Search" />
+          <span class="search_btn">
+            <ion-icon name="search"></ion-icon>
+          </span>
+        </div>
+
+        <!-- notes container -->
+        <ul class="collection"></ul>
+      </div>
+
+      <div class="add_note_wrapper">
+        <div class="note_details_header">
+          <input type="text" class="title" placeholder="Title" />
+
+          <select id="category" class="category">
+            <option value="Work" selected>Work</option>
+            <option value="School">School</option>
+            <option value="Home">Home</option>
+            <option value="Friends">Friends</option>
+          </select>
+        </div>
+        <textarea
+          class="note_content"
+          placeholder="Notes ..."
+          autofocus
+        ></textarea>
+        <button class="save_btn">Save</button>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
