@@ -37,6 +37,22 @@ const fetchData = () => {
 
 fetchData();
 
+//Collection Counter
+const collectionCounter = () => {
+  const data = getData();
+  const collectionCounter = document.querySelector("#collection_counter");
+
+  if (data.length === 0) {
+    collectionCounter.classList.add("d-none");
+  } else {
+    collectionCounter.classList.remove("d-none");
+  }
+
+  collectionCounter.innerHTML = `${data.length}`;
+};
+
+collectionCounter();
+
 //add and update
 saveBtn.addEventListener("click", () => {
   if (checkValidity()) {
@@ -72,6 +88,7 @@ saveBtn.addEventListener("click", () => {
 
   displayNotes();
   clearInput();
+  collectionCounter();
 });
 
 //checking if all input fields are not empty strings
@@ -90,7 +107,7 @@ const checkValidity = () => {
     content,
     date: new Date().toLocaleDateString(),
     id: uuid(),
-    isLocked: false,
+    isLocked: true,
   };
 };
 
@@ -136,6 +153,7 @@ const displayNotes = () => {
   }
 
   collectionContainer.innerHTML = output;
+  collectionCounter();
 };
 
 displayNotes();
@@ -147,6 +165,7 @@ const deleteNote = (index) => {
   data.splice(index, 1);
   localStorage.setItem("Notes", JSON.stringify(data));
   displayNotes();
+  collectionCounter();
 };
 
 //edit
@@ -169,6 +188,7 @@ const editNote = (index) => {
   const cancelBtn = document.querySelector(".cancel_btn");
   cancelBtn.style.display = "block";
   cancelBtn.addEventListener("click", cancelAction);
+  collectionCounter();
 };
 
 const cancelAction = () => {
@@ -179,6 +199,7 @@ const cancelAction = () => {
   isUpdate = false;
   editID = null;
   clearInput();
+  collectionCounter();
 };
 
 //lock the note
@@ -194,6 +215,7 @@ const lockNote = (index) => {
   localStorage.setItem("Notes", JSON.stringify(data));
 
   displayNotes();
+  collectionCounter();
 };
 
 //search notes
@@ -243,6 +265,7 @@ searchInput.addEventListener("keyup", () => {
   collectionContainer.innerHTML = output;
 
   console.log(searchValue);
+  collectionCounter();
 });
 
 //view note
@@ -259,47 +282,39 @@ const viewNote = (index) => {
                            <p class="text-primary">Date: ${date}</p>`;
 
   modalBody.innerHTML = `<p class=" text-break text-light">${content}</p>`;
+  collectionCounter();
 };
 
 //clear all input fields
 const clearInput = () => {
   document.querySelector(".title").value = "";
   document.querySelector(".note_content").value = "";
+  collectionCounter();
 };
 
-document.addEventListener("click", (e) => {
+//tippy
+document.addEventListener("click", () => {
   tippy(".view_btn", {
     placement: "bottom",
     content: "View Note",
-    allowHTML: true,
     arrow: false,
   });
 
   tippy(".edit_btn", {
     placement: "bottom",
     content: "Edit Note",
-    allowHTML: true,
     arrow: false,
   });
 
   tippy(".delete_btn", {
     placement: "bottom",
     content: "Delete Note",
-    allowHTML: true,
     arrow: false,
   });
 
   tippy(".lock_btn", {
     placement: "bottom",
     content: "Lock Note",
-    allowHTML: true,
-    arrow: false,
-  });
-
-  tippy(".lock_btn.lock", {
-    placement: "bottom",
-    content: "Locked",
-    allowHTML: true,
     arrow: false,
   });
 });

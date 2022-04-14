@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://static.vecteezy.com/system/resources/previews/000/355/304/original/vector-notes-icon.jpg"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="styles/index.css" />
     <!-- CSS only -->
     <link
@@ -24,7 +29,11 @@
 
     <div class="notes_container">
       <div class="view_notes_container">
-        <h3 class="collection_label">Collections</h3>
+        <h3 class="collection_label">
+          Collections<span class="badge badge-light" id="collection_counter"
+            >0</span
+          >
+        </h3>
         <div class="search_note">
           <input class="search_input" type="text" placeholder="Search" />
           <span class="search_btn">
@@ -42,10 +51,12 @@
 
           <select id="category" class="category">
             <option value="Work">Work</option>
+            <option value="Savings">Savings</option>
             <option value="School">School</option>
             <option value="Home">Home</option>
             <option value="Friends">Friends</option>
             <option value="Relationship">Relationship</option>
+            <option value="Other">Other...</option>
           </select>
         </div>
         <textarea
