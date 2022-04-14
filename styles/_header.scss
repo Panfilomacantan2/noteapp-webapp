@@ -9,8 +9,19 @@
   justify-content: space-between;
   align-items: center;
 
+  @include xs-screen {
+    padding: 10px 15px;
+    width: 100%;
+  }
+
+
+  
   .logo{
       color: #fff;
+
+      @include xs-screen {
+        font-size: 1rem;
+      }
   }
 
   .add_btn{

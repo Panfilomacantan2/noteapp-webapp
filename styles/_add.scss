@@ -2,6 +2,15 @@
   height: 100%;
   width: 100%;
   padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include xs-screen {
+    padding: 10px;
+    width: 100%;
+  }
 
   .note_details_header {
     width: 100%;
@@ -70,6 +79,5 @@
     cursor: pointer;
     margin-top: 6px;
     display: none;
-
   }
 }

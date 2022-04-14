@@ -236,7 +236,7 @@ searchInput.addEventListener("keyup", () => {
     output += `
         <div class="empty_collection">
           <img src="./styles/no_item.svg" />
-          <p>NO COLLECTIONS FOUND</p>
+          <p>NO COLLECTIONS FOUND.</p>
         </div> 
     `;
   }
@@ -254,11 +254,11 @@ const viewNote = (index) => {
   const modalTitle = document.querySelector(".modal-title");
   const modalBody = document.querySelector(".modal-body");
 
-  modalTitle.innerHTML = `<p>Title: ${title}
-                           <p>Category: ${category}</p>
-                           <p>Date: ${date}</p>`;
+  modalTitle.innerHTML = `<p class="text-primary">Title: ${title}
+                           <p class="text-primary">Category: ${category}</p>
+                           <p class="text-primary">Date: ${date}</p>`;
 
-  modalBody.innerHTML = `<p class=" text-break"">${content}</p>`;
+  modalBody.innerHTML = `<p class=" text-break text-light">${content}</p>`;
 };
 
 //clear all input fields
