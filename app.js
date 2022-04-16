@@ -230,13 +230,16 @@ searchInput.addEventListener("keyup", () => {
     note.content.toLowerCase().includes(searchValue)
   );
 
-  if (filteredData.length > 0) {
-    filteredData.map((note, index) => {
-      const { title, category, content, date, id, isLocked } = note;
-      const setAction = isLocked ? "lock" : " ";
-      const cutContent =
-        content.length >= 25 ? content.slice(0, 25) + "..." : content;
-      output += `
+  if (searchValue === "") {
+    displayNotes();
+  } else {
+    if (filteredData.length > 0) {
+      filteredData.map((note, index) => {
+        const { title, category, content, date, id, isLocked } = note;
+        const setAction = isLocked ? "lock" : " ";
+        const cutContent =
+          content.length >= 25 ? content.slice(0, 25) + "..." : content;
+        output += `
 
           <li>
           <div class="detail">
@@ -253,17 +256,17 @@ searchInput.addEventListener("keyup", () => {
 
           </div>
         </li> `;
-    });
-  } else {
-    output += `
+      });
+    } else {
+      output += `
         <div class="empty_collection">
           <img src="./styles/no_item.svg" />
           <p>NO COLLECTIONS FOUND.</p>
         </div> 
     `;
+    }
+    collectionContainer.innerHTML = output;
   }
-  collectionContainer.innerHTML = output;
-
   console.log(searchValue);
   collectionCounter();
 });
