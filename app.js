@@ -321,3 +321,39 @@ document.addEventListener("click", () => {
     arrow: false,
   });
 });
+
+//check if the user is using a dark mode
+const togglerThemeIcon = document.querySelector(".theme_toggler_icon");
+const current = [...document.querySelectorAll("[data-theme]")];
+const theme = localStorage.getItem("theme");
+[...current].map((item) => (item.dataset.theme = theme));
+[...current].map((item) => {
+  if (item.dataset.theme === "dark") {
+    item.style.background = "";
+  } else {
+    item.style.background = "";
+  }
+});
+
+const toggleTheme = () => {
+  const current = [...document.querySelectorAll("[data-theme]")];
+
+  const theme = localStorage.getItem("theme");
+  [...current].map((item) => (item.dataset.theme = theme));
+  [...current].map((item) => (item.dataset.theme = theme));
+
+  [...current].map((item) => {
+    if (item.dataset.theme == "dark") {
+      item.style.backgroundColor = "";
+      togglerThemeIcon.innerHTML = '<ion-icon name="moon"></ion-icon>';
+      localStorage.setItem("theme", "light");
+    } else {
+      item.style.backgroundColor = "";
+      togglerThemeIcon.innerHTML = '<ion-icon name="sunny"></ion-icon>';
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
+  togglerThemeIcon.classList.toggle("dark_mode");
+};
+togglerThemeIcon.addEventListener("click", toggleTheme);

@@ -20,14 +20,16 @@
     <title>Note Web App</title>
   </head>
   <body>
-    <header class="header">
-      <h3 class="logo">NoteApp</h3>
+    <header class="header" data-theme="light">
+      <h3 class="logo" data-theme="light">NoteApp</h3>
       <span class="add_btn">
-        <a href="#note_form" class="text-light text-decoration-none">+</a>
+        <a href="#note_form" class="plus_icon">+</a>
+        <a href="#" class="theme_toggler_icon dark_mode"><ion-icon name="moon"></ion-icon></a>
+         
       </span>
     </header>
 
-    <div class="notes_container">
+    <div class="notes_container" data-theme="light">
       <div class="view_notes_container">
         <h3 class="collection_label">
           Collections<span class="badge badge-light" id="collection_counter"
@@ -42,7 +44,7 @@
         </div>
 
         <!-- notes container -->
-        <ul class="collection"></ul>
+        <ul class="collection" ></ul>
       </div>
 
       <div class="add_note_wrapper" id="note_form">
